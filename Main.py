@@ -21,7 +21,7 @@ def data_grabber(query:str):
         for article in data["articles"]:
             print(f"Title: {article['title']}")
             print(f"URL: {article['url']}")
-            print(f"Date: {article['date']}")
+            print(f"Date: {article['seendate']}")
             print("-" * 40)
 
     elif response.status_code == 429:
