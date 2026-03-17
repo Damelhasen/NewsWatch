@@ -5,7 +5,8 @@ import json
 import os
 import matplotlib.pyplot as plt
 import webbrowser
-from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 #######################Country->cordianates########################
 COUNTRY_COORDS = {
     "Afghanistan": (33.9391, 67.7100), "Albania": (41.1533, 20.1683), "Algeria": (28.0339, 1.6596),
@@ -70,14 +71,15 @@ def clear_screen():
 source_countries = {}
 
 def Sentiment_analyzer (text:str):
-    sentiment_polarity = TextBlob(text).sentiment.polarity
-    if sentiment_polarity == 0 :
-        return "Neutral"
-    elif sentiment_polarity > 0:
-        return "Positive"
-    else:
+    analyzer = SentimentIntensityAnalyzer()
+    Sentiment_score = analyzer.polarity_scores(text)
+    Sentiment_score = Sentiment_score["compound"]
+    if Sentiment_score >= 0.05:
+        return "Positive"   
+    elif Sentiment_score <= -0.05:
         return "Negative"
-
+    else:        
+        return "Neutral"
 def data_grabber(query:str):
     url = "https://api.gdeltproject.org/api/v2/doc/doc"
     params = {"query": query,
