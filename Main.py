@@ -72,7 +72,7 @@ def data_grabber(query:str):
         "mode": "artlist",
         "format": "json",
         "timespan": "7d",
-        "maxrecords": 100}
+        "maxrecords": 50}
     
     response = requests.get(url, params=params)
     if response.status_code == 200:
@@ -91,7 +91,7 @@ def data_grabber(query:str):
                 source_countries[article["sourcecountry"]] = 1
             print("-" * 40)
         print(source_countries)
-        return data , source_countries
+        return data , source_countries 
         
     elif response.status_code == 429:
         print(f"Error: {response.status_code}")
@@ -106,16 +106,16 @@ def data_grabber(query:str):
 def visualize_data(source_countries, query:str):
      countries = list(source_countries.keys())
      counts = list(source_countries.values())
-     plt.figure(figsize=(10, 6))
-     plt.bar(countries, counts, color='blue')
-     plt.title(f"Number of articles about {query} by source country")
-     plt.xlabel("Source Country")
-     plt.ylabel("Articles Published")
+     plt.bar(countries, counts, color="crimson")
+
+     plt.xticks(countries, rotation=90 , fontsize=8)
+     plt.ylabel("Number of Articles")
+     plt.title(f"Number of Articles by Source Country for Query: {query}")
      plt.show()
 def main():
     lookup_query = str(input("Enter a search query: "))
     clear_screen()
-    data_grabber(lookup_query)
+    data, source_countries = data_grabber(lookup_query)
     visualize_data(source_countries, lookup_query)
 
 
