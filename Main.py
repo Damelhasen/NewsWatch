@@ -122,10 +122,13 @@ def map_maker(source_countries):
             lat, lon = COUNTRY_COORDS[country]
             folium.Marker(location=[lat, lon], popup=f"{country}: {source_countries[country]} articles").add_to(m)
     m.save("newsmap.html")
-    webbrowser.open('file://' + os.path.realpath('newsmap.html'))
-    print('Map initialized')
-
-
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_dir, "newsmap.html")
+    
+    m.save(path)
+    print(f"Map saved to: {path}")
+    webbrowser.open('file:///' + path)
+    print("Map opened in browser")
 def main():
     lookup_query = str(input("Enter a search query: "))
     clear_screen()
