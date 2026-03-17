@@ -1,0 +1,36 @@
+
+# NewsWatch
+**NewsWatch** is a python app that lets you lookup a news subject for example : "sharks" and returns a bar graph and world map of what countries are producing the most News articles about it .
+
+Usage Examples :
+
+- Bias Detection
+- News Confirmation
+- Research tool for Foreing Interests
+- etc...
+
+
+## Installation
+
+1.Install NewsWatch directly from the GitHub Release Page here :
+
+```bash
+  https://github.com/Damelhasen/NewsWatch/releases/tag/first
+```
+2.Git Clone this repo :
+
+```bash
+ git clone "https://github.com/Damelhasen/NewsWatch"
+```
+
+## Acknowledgements
+
+ AI Use :
+ AI was used in this project through gitHub copilot and Claude . Claude was used to trouble shoot looping through lists and Florium installation . Copilot was used to fix indent errors and compile list of country coordinates.
+
+
+## Demo
+
+![Screenshot of terminal](ScreenShots/Screenshot 2026-03-17 031044.png)
+
+
