@@ -5,6 +5,7 @@ import json
 import os
 import matplotlib.pyplot as plt
 import webbrowser
+from textblob import TextBlob
 #######################Country->cordianates########################
 COUNTRY_COORDS = {
     "Afghanistan": (33.9391, 67.7100), "Albania": (41.1533, 20.1683), "Algeria": (28.0339, 1.6596),
@@ -68,6 +69,15 @@ def clear_screen():
 
 source_countries = {}
 
+def Sentiment_analyzer (text:str):
+    sentiment_polarity = TextBlob(text).sentiment.polarity
+    if sentiment_polarity == 0 :
+        return "Neutral"
+    elif sentiment_polarity > 0:
+        return "Positive"
+    else:
+        return "Negative"
+
 def data_grabber(query:str):
     url = "https://api.gdeltproject.org/api/v2/doc/doc"
     params = {"query": query,
@@ -83,9 +93,11 @@ def data_grabber(query:str):
         source_countries = {}
         data = response.json()
         for article in data["articles"]:
+            sentiment = Sentiment_analyzer(article["title"])
             print(f"Title: {article['title']}")
             print(f"URL: {article['url']}")
             print(f"Date: {article['seendate']}")
+            print(f"Sentiment: {sentiment}")
             print(article["sourcecountry"])
             if article["sourcecountry"] in source_countries:
                 source_countries[article["sourcecountry"]] += 1
