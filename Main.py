@@ -1,8 +1,10 @@
+import folium
 import requests 
 import time
 import json 
 import os
 import matplotlib.pyplot as plt
+import webbrowser
 #######################Country->cordianates########################
 COUNTRY_COORDS = {
     "Afghanistan": (33.9391, 67.7100), "Albania": (41.1533, 20.1683), "Algeria": (28.0339, 1.6596),
@@ -112,12 +114,24 @@ def visualize_data(source_countries, query:str):
      plt.ylabel("Number of Articles")
      plt.title(f"Number of Articles by Source Country for Query: {query}")
      plt.show()
+
+def map_maker(source_countries):
+    m = folium.Map(location=[20, 0], zoom_start=2)
+    for country in source_countries.keys() :
+        if country in COUNTRY_COORDS:
+            lat, lon = COUNTRY_COORDS[country]
+            folium.Marker(location=[lat, lon], popup=f"{country}: {source_countries[country]} articles").add_to(m)
+    m.save("newsmap.html")
+    webbrowser.open('file://' + os.path.realpath('newsmap.html'))
+    print('Map initialized')
+
+
 def main():
     lookup_query = str(input("Enter a search query: "))
     clear_screen()
     data, source_countries = data_grabber(lookup_query)
     visualize_data(source_countries, lookup_query)
-
+    map_maker(source_countries)
 
 if __name__ == "__main__":
     main()
