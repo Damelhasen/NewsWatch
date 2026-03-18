@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "newswatcherv1"
+version = "0.1.0"
+authors = [
+  { name="Johan Sheby", email="Jotheexplorer123@gmail.com" },
+]
+description = "A global conflict and news tracker using GDELT"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests",
+    "folium",
+    "matplotlib",
+    "vader-sentiment",
+]
+
+[project.scripts]
+newswatcherv1 = "newswatch.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/newswatch"]
