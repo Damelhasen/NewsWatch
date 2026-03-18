@@ -1,5 +1,7 @@
 
 # NewsWatch
+
+![PyPI](https://img.shields.io/pypi/v/newswatcherv1)
 **NewsWatch** is a python app that lets you lookup a news subject for example : "sharks" and returns a bar graph and world map of what countries are producing the most News articles about it .
 
 Usage Examples :
