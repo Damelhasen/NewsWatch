@@ -11,6 +11,7 @@ Usage Examples :
 
 
 ## Installation
+**Run on Windows for full features**
 Install by running :
 ```bash
  pip install newswatcherv1
