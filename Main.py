@@ -1,11 +1,11 @@
-import folium
+﻿import folium
 import requests 
 import time
 import json 
 import os
 import matplotlib.pyplot as plt
 import webbrowser
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from vader_sentiment.vader_sentiment import SentimentIntensityAnalyzer
 
 #######################Country->cordianates########################
 COUNTRY_COORDS = {
@@ -152,3 +152,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

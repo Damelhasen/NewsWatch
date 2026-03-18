@@ -1,0 +1,23 @@
+# Virtual Environment
+venv311/
+venv/
+env/
+__pycache__/
+
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+*.html
+build/
+dist/
+*.egg-info/
