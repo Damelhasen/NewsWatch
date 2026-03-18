@@ -5,7 +5,7 @@ import json
 import os
 import matplotlib.pyplot as plt
 import webbrowser
-from vader_sentiment.vader_sentiment import SentimentIntensityAnalyzer
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 #######################Country->cordianates########################
 COUNTRY_COORDS = {
